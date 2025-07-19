@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2025-07-05 14:04",
+    "items": [
+      {
+        "name": "bread",
+        "price": 800.0,
+        "quantity": 6,
+        "total": 4800.0
+      },
+      {
+        "name": "cola",
+        "price": 980.0,
+        "quantity": 8,
+        "total": 7840.0
+      },
+      {
+        "name": "nut",
+        "price": 9000.0,
+        "quantity": 9,
+        "total": 81000.0
+      }
+    ],
+    "total": 84276
+  }
+]
