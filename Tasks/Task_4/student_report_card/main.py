@@ -61,6 +61,40 @@ def add_student():
     save_students(students)
     print(f"Student {name} added successfully!")
 
+def view_students():
+    students = load_students()
+    if not students:
+        print("No students found.")
+        return
+    for student in students:
+        print(f"\nName: {student['name']}")
+        print(f"Subjects & Scores: {student['subjects']}")
+        print(f"Average: {student['average']:.2f}")
+        print(f"Grade: {student['grade']}")
+
+def update_student():
+    students = load_students()
+    name = input("Enter the name of the student to update: ")
+    found = False
+    for student in students:
+        if student["name"].lower() == name.lower():
+            found = True
+            print("Current subjects:", student["subjects"])
+            subject = input("Enter the subject to update/add: ")
+            try:
+                score = float(input("Enter new score: "))
+                student["subjects"][subject] = score
+                temp_student = Student(student["name"], student["subjects"])
+                student["average"] = temp_student.average
+                student["grade"] = temp_student.grade
+                save_students(students)
+                print("Student record updated.")
+            except ValueError:
+                print("Invalid score.")
+            break
+    if not found:
+        print("Student not found.")
+
 def main():
     while True:
         print("\n=== Student Report Card App ===")
