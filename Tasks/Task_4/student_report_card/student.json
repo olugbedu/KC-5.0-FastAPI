@@ -1,0 +1,11 @@
+[
+    {
+        "name": "deji",
+        "subjects": {
+            "math": 90.0,
+            "english": 99.0
+        },
+        "average": 94.5,
+        "grade": "A"
+    }
+]
