@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Adedeji",
+        "subject_scores": {
+            "English": 90.0,
+            "Maths": 90.0,
+            "Yoruba": 90.0
+        },
+        "average": 90.0,
+        "grade": "A"
+    }
+]
