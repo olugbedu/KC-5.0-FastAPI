@@ -10,7 +10,6 @@ PRODUCTS_FILE = "products.json"
 CART_FILE = "cart.json"
 
 
-# ---------- Utilities ----------
 def load_json(filename):
     if not os.path.exists(filename):
         return {}
@@ -23,7 +22,6 @@ def save_json(filename, data):
         json.dump(data, f, indent=4)
 
 
-# ---------- User Management ----------
 @app.post("/register/")
 def register(username: str, password: str, role: str = "customer"):
     users = load_users()
@@ -36,7 +34,6 @@ def register(username: str, password: str, role: str = "customer"):
     return {"message": f"User {username} registered as {role}"}
 
 
-# ---------- Admin Endpoints ----------
 @app.post("/admin/add_product/")
 def add_product(product_id: str, name: str, price: float, user=Depends(admin_required)):
     products = load_json(PRODUCTS_FILE)
@@ -47,14 +44,12 @@ def add_product(product_id: str, name: str, price: float, user=Depends(admin_req
     return {"message": f"Product {name} added successfully"}
 
 
-# ---------- Public Endpoints ----------
 @app.get("/products/")
 def list_products():
     products = load_json(PRODUCTS_FILE)
     return products
 
 
-# ---------- Customer Endpoints ----------
 @app.post("/cart/add/")
 def add_to_cart(product_id: str, quantity: int, user=Depends(authenticate)):
     products = load_json(PRODUCTS_FILE)

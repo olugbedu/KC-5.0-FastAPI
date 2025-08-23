@@ -11,7 +11,6 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 STUDENTS_FILE = "students.json"
 
 
-# Helper: authenticate user
 def authenticate(credentials: HTTPBasicCredentials):
     students = load_students(STUDENTS_FILE)
     username = credentials.username

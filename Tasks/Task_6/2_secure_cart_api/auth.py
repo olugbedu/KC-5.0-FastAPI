@@ -13,7 +13,6 @@ security = HTTPBasic()
 USERS_FILE = "users.json"
 
 
-# ---------- Utility ----------
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -30,7 +29,6 @@ def save_users(users):
         json.dump(users, f, indent=4)
 
 
-# ---------- Authentication ----------
 def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
     users = load_users()
     username = credentials.username
