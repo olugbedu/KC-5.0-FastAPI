@@ -1,0 +1,107 @@
+ERROR:fastapi:Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:PRAGMA temp.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:
+CREATE TABLE student (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	age INTEGER NOT NULL, 
+	email VARCHAR NOT NULL, 
+	grades VARCHAR NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+INFO:sqlalchemy.engine.Engine:[no key 0.00048s] ()
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:root:GET http://127.0.0.1:8000/
+INFO:root:GET http://127.0.0.1:8000/favicon.ico
+INFO:root:GET http://127.0.0.1:8000/docs
+INFO:root:GET http://127.0.0.1:8000/openapi.json
+INFO:root:POST http://127.0.0.1:8000/login
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:root:POST http://127.0.0.1:8000/login
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("user")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:PRAGMA temp.table_info("user")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:
+CREATE TABLE user (
+	id INTEGER NOT NULL, 
+	username VARCHAR NOT NULL, 
+	hashed_password VARCHAR NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+INFO:sqlalchemy.engine.Engine:[no key 0.00032s] ()
+INFO:sqlalchemy.engine.Engine:CREATE UNIQUE INDEX ix_user_username ON user (username)
+INFO:sqlalchemy.engine.Engine:[no key 0.00042s] ()
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("user")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:root:GET http://127.0.0.1:8000/docs
+INFO:root:GET http://127.0.0.1:8000/openapi.json
+INFO:root:POST http://127.0.0.1:8000/users/register?username=deji&password=123456
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/gbedu/My-projects/KC-5.0-FastAPI/Tasks/.venv/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO user (username, hashed_password) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00064s] ('deji', '$2b$12$jxKyph7W9u0Eh4XyAg1bS.DyyQhgJgCncyB2BNlbxcBGv5Tb6bElW')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT user.id, user.username, user.hashed_password 
+FROM user 
+WHERE user.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00071s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:root:POST http://127.0.0.1:8000/users/login
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT user.id, user.username, user.hashed_password 
+FROM user 
+WHERE user.username = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00069s] ('deji',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:root:GET http://127.0.0.1:8000/students/
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT student.id, student.name, student.age, student.email, student.grades 
+FROM student
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:root:POST http://127.0.0.1:8000/students/
+INFO:root:POST http://127.0.0.1:8000/users/login
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT user.id, user.username, user.hashed_password 
+FROM user 
+WHERE user.username = ?
+INFO:sqlalchemy.engine.Engine:[cached since 140s ago] ('deji',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:root:POST http://127.0.0.1:8000/students/
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("student")
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:root:GET http://127.0.0.1:8000/docs
+INFO:root:GET http://127.0.0.1:8000/openapi.json
+INFO:root:POST http://127.0.0.1:8000/login
+INFO:root:POST http://127.0.0.1:8000/students/
